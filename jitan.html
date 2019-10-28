@@ -27,7 +27,7 @@ jitan.onload = function () {
     jitan.times.forEach(function (n, i) {
       ret.push('<tr style="vertical-align: middle;"><td>');
       ret.push('<span style="display: inline-block; width: 3em;">' + n.name + '</span>');
-      ret.push('<input type="number" pattern="\d*" name="jitan-' + n.time + '" time="' + n.time + '" size="6" parent="' + name + '" style="font-size: 16px; transform: scale(0.8);"/>');
+      ret.push('<input type="number" pattern="\d*" name="jitan-' + n.time + '" time="' + n.time + '" size="6" parent="' + name + '" style="font-size: 16px; transform: scale(0.8); width: 5em;"/>');
       ret.push('</td></tr>');
     });
     ret.push('</table>');
