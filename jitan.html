@@ -27,7 +27,7 @@ jitan.onload = function () {
     jitan.times.forEach(function (n, i) {
       ret.push('<tr style="vertical-align: middle;"><td>');
       ret.push('<span style="display: inline-block; width: 3em;">' + n.name + '</span>');
-      ret.push('<input type="tel" name=jitan-"' + n.time + '" time="' + n.time + '" size="6" parent="' + name + '" style="font-size: 16px; transform: scale(0.8);"/>');
+      ret.push('<input type="tel" name="jitan-' + n.time + '" time="' + n.time + '" size="6" parent="' + name + '" style="font-size: 16px; transform: scale(0.8);"/>');
       ret.push('</td></tr>');
     });
     ret.push('</table>');
@@ -45,6 +45,7 @@ jitan.onload = function () {
   document.querySelector('.jitan').innerHTML = out.join('');;
   document.querySelectorAll('input[name^="jitan-"]').forEach(function (n, i) {
     n.addEventListener('change', jitan.onchange);
+    n.addEventListener('keypress', jitan.onkeypress);
   });
 };
 jitan.onchange = function (e) {
@@ -68,11 +69,26 @@ jitan.onchange = function (e) {
   });
   document.querySelector('.total').innerHTML = 'total: ' + maketotal(total);
 };
+jitan.onkeypress = function (e) {
+  if (e.code == 'Enter') {
+    var targets = document.querySelectorAll('input');
+    for (var i = 0; i < targets.length; i++) {
+      if (targets[i] === e.currentTarget) {
+        if (i + 1 == targets.length) {
+          targets[0].focus();
+        } else {
+          targets[i + 1].focus();
+        }
+        break;
+      }
+    }
+  }
+};
 document.addEventListener('DOMContentLoaded', jitan.onload);
 </script>
 </head>
 <body>
-<h4 style="margin: 0;">時短計算 ver.2019.09.27</h4>
+<h4 style="margin: 0;">時短計算 ver.2019.10.28</h4>
 <div class="jitan"></div>
 </body>
 </html>
