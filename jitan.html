@@ -70,8 +70,7 @@ jitan.onchange = function (e) {
   document.querySelector('.total').innerHTML = 'total: ' + maketotal(total);
 };
 jitan.onkeyup = function (e) {
-  alert(e.keyCode);
-  if (e.code == 'Enter') {
+  if (e.keyCode == 13) {
     var targets = document.querySelectorAll('input');
     for (var i = 0; i < targets.length; i++) {
       if (targets[i] === e.currentTarget) {
