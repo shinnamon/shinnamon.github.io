@@ -45,7 +45,7 @@ jitan.onload = function () {
   document.querySelector('.jitan').innerHTML = out.join('');;
   document.querySelectorAll('input[name^="jitan-"]').forEach(function (n, i) {
     n.addEventListener('change', jitan.onchange);
-    n.addEventListener('keypress', jitan.onkeypress);
+    n.addEventListener('keyup', jitan.onkeyup);
   });
 };
 jitan.onchange = function (e) {
@@ -69,7 +69,7 @@ jitan.onchange = function (e) {
   });
   document.querySelector('.total').innerHTML = 'total: ' + maketotal(total);
 };
-jitan.onkeypress = function (e) {
+jitan.onkeyup = function (e) {
   if (e.code == 'Enter') {
     var targets = document.querySelectorAll('input');
     for (var i = 0; i < targets.length; i++) {
